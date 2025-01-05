@@ -1,12 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = [
     {
-      duration: "2023 - 2024",
+      duration: "2024 - Current",
       title: "Homeopathy Clinic Website and App",
       description:
-        "Developed a website and mobile app for a homeopathy clinic, allowing patients to book appointments and consult doctors via video calls. Integrated an ML model to classify patients as acute or chronic based on initial symptom input.",
+        "Developed a website and mobile app for a homeopathy clinic, allowing patients to book appointments and consult doctors via video calls. Integrated an ML model to classify patients as acute or chronic based on initial symptom input. Patients can make appointments and track their medical records. Doctors can track patients with the call log.",
       techStack: [
         "React Native",
         "React.js",
@@ -19,7 +20,7 @@ const Projects = () => {
       duration: "2023 - 2024",
       title: "Tourism App For Coimbatore",
       description:
-        "Developed a tourism app on Android Studio for Coimbatore, featuring tourist spots, hotels, and restaurants. Integrated location-based features for a seamless user experience. Led the project from design to deployment, ensuring high-quality UI/UX. Currently under copyright, showcasing innovation in app development.",
+        "Developed a tourism app on Android Studio for Coimbatore, featuring tourist spots, hotels, and restaurants. Integrated location-based features for a seamless user experience. Ensured high-quality UI/UX. Currently under copyright process and to be uploaded to Play Store.",
       techStack: ["Android Studio", "Firebase"],
     },
     {
@@ -32,55 +33,71 @@ const Projects = () => {
   ];
 
   return (
-    <div className="px-6 lg:px-[13rem] py-[2.4rem] bg-[#1D1E24] text-white">
-      <h1 className="text-3xl mb-12 sixtyfour-styled">Projects</h1>
+    <motion.div
+      className="px-6 lg:px-[13rem] py-[2.4rem] bg-[#1D1E24] text-white"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <motion.h1
+        className="text-3xl mb-12 sixtyfour-styled"
+        initial={{ x: -50 }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        Projects
+      </motion.h1>
+
       {projects.map((project, index) => (
-        <section
+        <motion.section
           key={index}
           className="flex flex-col lg:flex-row lg:gap-4 mb-8 border-b border-gray-700 pb-4"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+          viewport={{ once: true }}
         >
-          {/* Duration: Always on top */}
-          <div className="lg:w-1/2">
+          <motion.div
+            className="lg:w-1/2"
+            initial={{ x: -20, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <p className="text-gray-400">{project.duration}</p>
-          </div>
+          </motion.div>
 
-          {/* Details: Dynamically adjusts structure */}
           <div className="lg:w-1/2">
-            {/* Below 900px: Description first */}
-            <div className="flex flex-col gap-2 lg:hidden">
-              <h1 className="font-bold text-lg">{project.title}</h1>
-              <p className="text-sm">{project.description}</p>
+            <motion.div
+              className="flex flex-col gap-2"
+              initial={{ x: 20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h1 className="text-lg">{project.title}</h1>
+              <p className="text-sm font-quicksand">{project.description}</p>
               <div className="flex gap-2 flex-wrap">
                 {project.techStack.map((tech, techIndex) => (
-                  <span
+                  <motion.span
                     key={techIndex}
                     className="bg-[#A8B9CF] text-sm px-3 py-1 rounded-md"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: 0.4 + techIndex * 0.1 }}
+                    viewport={{ once: true }}
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
-            </div>
-
-            {/* Above 900px: Tech stack first */}
-            <div className="hidden lg:flex lg:flex-col lg:gap-2">
-              <h1 className="font-bold text-lg">{project.title}</h1>
-              <p className="text-sm">{project.description}</p>
-              <div className="flex gap-3 flex-wrap">
-                {project.techStack.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="bg-[#A8B9CF] text-sm px-3 py-1 rounded-md"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
