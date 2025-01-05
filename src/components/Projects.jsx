@@ -32,22 +32,50 @@ const Projects = () => {
   ];
 
   return (
-    <div className="px-[13rem] py-[2.4rem] bg-[#1D1E24] text-white">
+    <div className="px-6 lg:px-[13rem] py-[2.4rem] bg-[#1D1E24] text-white">
       <h1 className="text-3xl mb-12 sixtyfour-styled">Projects</h1>
       {projects.map((project, index) => (
-        <section key={index} className="flex mb-8">
-          <div className="w-1/2">
-            <p>{project.duration}</p>
+        <section
+          key={index}
+          className="flex flex-col lg:flex-row lg:gap-4 mb-8 border-b border-gray-700 pb-4"
+        >
+          {/* Duration: Always on top */}
+          <div className="lg:w-1/2">
+            <p className="text-gray-400">{project.duration}</p>
           </div>
-          <div className="w-1/2 flex flex-col gap-2">
-            <h1>{project.title}</h1>
-            <p className="font-quicksand mb-2">{project.description}</p>
-            <div className="flex gap-3 flex-wrap">
-              {project.techStack.map((tech, techIndex) => (
-                <span key={techIndex} className="bg-[#A8B9CF] px-2  rounded-md">
-                  {tech}
-                </span>
-              ))}
+
+          {/* Details: Dynamically adjusts structure */}
+          <div className="lg:w-1/2">
+            {/* Below 900px: Description first */}
+            <div className="flex flex-col gap-2 lg:hidden">
+              <h1 className="font-bold text-lg">{project.title}</h1>
+              <p className="text-sm">{project.description}</p>
+              <div className="flex gap-2 flex-wrap">
+                {project.techStack.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="bg-[#A8B9CF] text-sm px-3 py-1 rounded-md"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Above 900px: Tech stack first */}
+            <div className="hidden lg:flex lg:flex-col lg:gap-2">
+              <h1 className="font-bold text-lg">{project.title}</h1>
+              <p className="text-sm">{project.description}</p>
+              <div className="flex gap-3 flex-wrap">
+                {project.techStack.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="bg-[#A8B9CF] text-sm px-3 py-1 rounded-md"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>

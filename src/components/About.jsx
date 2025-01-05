@@ -2,10 +2,10 @@ import React from "react";
 
 const About = () => {
   return (
-    <section class="px-[13rem] py-[2.4rem]">
-      <h1 class="text-3xl">About</h1>
+    <section className="px-6 lg:px-[13rem] py-[2.4rem]">
+      <h1 className="text-3xl">About</h1>
       <br />
-      <p class="text-2xl font-quicksand">
+      <p className="text-2xl font-quicksand">
         Hello! I'm Adrin, a passionate and forward-thinking student with
         hands-on experience in developing full-stack projects using modern
         technologies like React and Node.js. Motivated by the desire to explore

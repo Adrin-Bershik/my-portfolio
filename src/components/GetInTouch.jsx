@@ -7,7 +7,7 @@ const GetInTouch = () => {
       <div className="flex gap-4">
         <a
           href="https://www.linkedin.com/in/adrin-bershik-95b919256"
-          className="text-gray-300 hover:text-blue-500 transition"
+          className="text-gray-300 "
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -15,7 +15,7 @@ const GetInTouch = () => {
         </a>
         <a
           href="mailto:adrinbershik.2201008@srec.ac.in"
-          className="text-gray-300 hover:text-blue-500 transition"
+          className="text-gray-300 "
         >
           <i className="bi bi-envelope-fill text-2xl"></i>
         </a>
